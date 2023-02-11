@@ -15,9 +15,10 @@ namespace Sibala
         }
 
         [Test]
-        public void A01_BothAllOfKind()
+        [TestCase("Black: 6 6 6 6  White: 3 3 3 3", "Black win. - with all of a kind: 6")]
+        public void A01_BothAllOfKind(string input, string expected)
         {
-            ResultShouldReturn("Black: 6 6 6 6  White: 3 3 3 3", "Black win. - with all of a kind: 6");
+            ResultShouldReturn(input, expected);
         }
 
         private void ResultShouldReturn(string input, string expected)
