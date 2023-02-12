@@ -5,13 +5,15 @@ namespace Sibala
 {
     public class Parse
     {
-        public List<Player> Parser(string v)
+        public List<Player> Parser(string input)
         {
+            var playerSection = input.Split("  ", StringSplitOptions.RemoveEmptyEntries)[0];
+            var player1Name = playerSection.Split(":", StringSplitOptions.RemoveEmptyEntries)[0];
             return new List<Player>
             {
                 new Player
                 {
-                    Name = "Black",
+                    Name = player1Name,
                 },
                 new Player
                 {
