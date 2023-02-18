@@ -8,35 +8,28 @@ namespace Sibala
     {
         public List<Player> Parser(string input)
         {
-            var player1Section = input.Split("  ", StringSplitOptions.RemoveEmptyEntries)[0];
-            var player1Name = player1Section.Split(":", StringSplitOptions.RemoveEmptyEntries)[0];
-            var player1Dices = player1Section.Split(":", StringSplitOptions.RemoveEmptyEntries)[1]
-                .Split(" ", StringSplitOptions.RemoveEmptyEntries)
-                .Select(s => new Dice{ Value = int.Parse(s) })
-                .ToList();
-            var player1 = new Player
-            {
-                Name = player1Name,
-                Dices = new List<Dice>(player1Dices)
-            };
-
-            var player2Section = input.Split("  ", StringSplitOptions.RemoveEmptyEntries)[1];
-            var player2Name = player2Section.Split(":", StringSplitOptions.RemoveEmptyEntries)[0];
-            var player2Dices = player2Section.Split(":", StringSplitOptions.RemoveEmptyEntries)[1]
-                .Split(" ", StringSplitOptions.RemoveEmptyEntries)
-                .Select(s => new Dice { Value = int.Parse(s) })
-                .ToList();
-            var player2 = new Player
-            {
-                Name = player2Name,
-                Dices = new List<Dice>(player2Dices)
-            };
+            var playerSection = input.Split("  ", StringSplitOptions.RemoveEmptyEntries);
 
             return new List<Player>
             {
-                player1,
-                player2
+                GetPlayer(playerSection[0]),
+                GetPlayer(playerSection[1])
             };
+        }
+
+        private Player GetPlayer(string playerSection)
+        {
+            var playerName = playerSection.Split(":", StringSplitOptions.RemoveEmptyEntries)[0];
+            var playerDices = playerSection.Split(":", StringSplitOptions.RemoveEmptyEntries)[1]
+                .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(s => new Dice { Value = int.Parse(s) })
+                .ToList();
+            var player = new Player
+            {
+                Name = playerName,
+                Dices = new List<Dice>(playerDices)
+            };
+            return player;
         }
     }
 }
