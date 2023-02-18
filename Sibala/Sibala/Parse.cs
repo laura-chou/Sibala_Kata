@@ -15,6 +15,13 @@ namespace Sibala
                 .Select(s => new Dice{ Value = int.Parse(s) })
                 .ToList();
 
+            var player2Section = input.Split("  ", StringSplitOptions.RemoveEmptyEntries)[1];
+            var player2Name = player2Section.Split(":", StringSplitOptions.RemoveEmptyEntries)[0];
+            var player2Dices = player2Section.Split(":", StringSplitOptions.RemoveEmptyEntries)[1]
+                .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(s => new Dice { Value = int.Parse(s) })
+                .ToList();
+
             return new List<Player>
             {
                 new Player
@@ -24,14 +31,8 @@ namespace Sibala
                 },
                 new Player
                 {
-                    Name = "White",
-                    Dices = new List<Dice>
-                    {
-                        new Dice{ Value = 3 },
-                        new Dice{ Value = 3 },
-                        new Dice{ Value = 3 },
-                        new Dice{ Value = 3 }
-                    }
+                    Name = player2Name,
+                    Dices = new List<Dice>(player2Dices)
                 }
             };
         }
