@@ -14,6 +14,11 @@ namespace Sibala
                 .Split(" ", StringSplitOptions.RemoveEmptyEntries)
                 .Select(s => new Dice{ Value = int.Parse(s) })
                 .ToList();
+            var player1 = new Player
+            {
+                Name = player1Name,
+                Dices = new List<Dice>(player1Dices)
+            };
 
             var player2Section = input.Split("  ", StringSplitOptions.RemoveEmptyEntries)[1];
             var player2Name = player2Section.Split(":", StringSplitOptions.RemoveEmptyEntries)[0];
@@ -21,19 +26,16 @@ namespace Sibala
                 .Split(" ", StringSplitOptions.RemoveEmptyEntries)
                 .Select(s => new Dice { Value = int.Parse(s) })
                 .ToList();
+            var player2 = new Player
+            {
+                Name = player2Name,
+                Dices = new List<Dice>(player2Dices)
+            };
 
             return new List<Player>
             {
-                new Player
-                {
-                    Name = player1Name,
-                    Dices = new List<Dice>(player1Dices)
-                },
-                new Player
-                {
-                    Name = player2Name,
-                    Dices = new List<Dice>(player2Dices)
-                }
+                player1,
+                player2
             };
         }
     }
