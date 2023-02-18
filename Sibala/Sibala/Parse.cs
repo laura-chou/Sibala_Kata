@@ -10,11 +10,7 @@ namespace Sibala
         {
             var playerSection = input.Split("  ", StringSplitOptions.RemoveEmptyEntries);
 
-            return new List<Player>
-            {
-                GetPlayer(playerSection[0]),
-                GetPlayer(playerSection[1])
-            };
+            return playerSection.Select(s => GetPlayer(s)).ToList();
         }
 
         private Player GetPlayer(string playerSection)
