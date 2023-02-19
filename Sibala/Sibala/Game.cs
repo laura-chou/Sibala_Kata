@@ -17,9 +17,10 @@ namespace Sibala
             if (player1Point != player2Point)
             {
                 var pointOrder = new List<int> { 2, 3, 5, 6, 4, 1 };
-                var winnerPlayer = (pointOrder.IndexOf(player1Point) > pointOrder.IndexOf(player2Point)) ? player[0].Name : player[1].Name;
+                var comparePoint = pointOrder.IndexOf(player1Point) > pointOrder.IndexOf(player2Point);
+                var winnerPlayer = (comparePoint) ? player[0].Name : player[1].Name;
                 var winnerCategory = "all of a kind";
-                var winnerPoints = (pointOrder.IndexOf(player1Point) > pointOrder.IndexOf(player2Point)) ? player1Point : player2Point;
+                var winnerPoints = (comparePoint) ? player1Point : player2Point;
                 return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoints}";
             }
 
