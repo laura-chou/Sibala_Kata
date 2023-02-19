@@ -13,10 +13,15 @@ namespace Sibala
             var player1Point = player[0].Dices.First().Value;
             var player2Point = player[1].Dices.First().Value;
 
-            var winnerPlayer = (player1Point > player2Point) ? player[0].Name : player[1].Name;
-            var winnerCategory = "all of a kind";
-            var winnerPoints = (player1Point > player2Point) ? player1Point : player2Point;
-            return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoints}";
+            if (player1Point != player2Point)
+            {
+                var winnerPlayer = (player1Point > player2Point) ? player[0].Name : player[1].Name;
+                var winnerCategory = "all of a kind";
+                var winnerPoints = (player1Point > player2Point) ? player1Point : player2Point;
+                return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoints}";
+            }
+
+            return "Tie";
         }
     }
 }
