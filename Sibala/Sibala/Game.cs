@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,17 +12,12 @@ namespace Sibala
             var parse = new Parse();
             var player = parse.Parser(input);
 
-            var player1Point = player[0].Dices.First().Value;
-            var player2Point = player[1].Dices.First().Value;
-
-            if (player1Point != player2Point)
+            if (player[0].Dices.GroupBy(x => x.Value).Where(w => w.Count() > 3).Count() > 0 &&
+                player[1].Dices.GroupBy(x => x.Value).Where(w => w.Count() > 3).Count() > 0 &&
+                player[0].Dices.First().Value != player[1].Dices.First().Value)
             {
-                var pointOrder = new List<int> { 2, 3, 5, 6, 4, 1 };
-                var comparePoint = pointOrder.IndexOf(player1Point) > pointOrder.IndexOf(player2Point);
-                var winnerPlayer = (comparePoint) ? player[0].Name : player[1].Name;
-                var winnerCategory = "all of a kind";
-                var winnerPoints = (comparePoint) ? player1Point : player2Point;
-                return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoints}";
+                var category = new AllOfKind(player[0], player[1]);
+                return $"{category.Player} win. - with {category.Category}: {category.Point}";
             }
 
             return "Tie";
