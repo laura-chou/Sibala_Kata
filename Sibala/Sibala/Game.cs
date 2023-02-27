@@ -12,12 +12,11 @@ namespace Sibala
             var parse = new Parse();
             var player = parse.Parser(input);
 
-            if (player[0].Dices.GroupBy(x => x.Value).Where(w => w.Count() > 3).Count() > 0 &&
-                player[1].Dices.GroupBy(x => x.Value).Where(w => w.Count() > 3).Count() > 0 &&
-                player[0].Dices.First().Value != player[1].Dices.First().Value)
+            var category = new Category(player[0].Dices, player[1].Dices);
+            if (category.DicesCategory is CategoryEnum.AllOfKind)
             {
-                var category = new AllOfKind(player[0], player[1]);
-                return $"{category.Player} win. - with {category.Category}: {category.Point}";
+                var winnerCategory = new AllOfKind(player[0], player[1]);
+                return $"{winnerCategory.Player} win. - with {winnerCategory.Category}: {winnerCategory.Point}";
             }
 
             return "Tie";
