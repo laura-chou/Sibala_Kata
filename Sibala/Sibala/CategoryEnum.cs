@@ -6,6 +6,7 @@ namespace Sibala
 {
     public enum CategoryEnum
     {
-        AllOfKind = 1
+        AllOfKind = 1,
+        NormalPoint = 2
     }
 }

@@ -14,6 +14,12 @@ namespace Sibala
                 player1Dices.First().Value != player2Dices.First().Value)
             {
                 DicesCategory = CategoryEnum.AllOfKind;
+            } 
+
+            if (player1Dices.GroupBy(g => g.Value).Distinct().Count() > 1 &&
+                player2Dices.GroupBy(g => g.Value).Distinct().Count() > 1)
+            {
+                DicesCategory = CategoryEnum.NormalPoint;
             }
         }
     }

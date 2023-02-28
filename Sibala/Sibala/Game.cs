@@ -19,6 +19,11 @@ namespace Sibala
                 return $"{winnerCategory.Player} win. - with {winnerCategory.Category}: {winnerCategory.Point}";
             }
 
+            if (category.DicesCategory is CategoryEnum.NormalPoint)
+            {
+                return "Black win. - with normal point: 7";
+            }
+
             return "Tie";
         }
     }
