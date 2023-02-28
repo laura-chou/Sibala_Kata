@@ -9,8 +9,8 @@ namespace Sibala
 
         public Category(List<Dice> player1Dices, List<Dice> player2Dices)
         {
-            if (player1Dices.GroupBy(x => x.Value).Where(w => w.Count() > 3).Count() > 0 &&
-                player2Dices.GroupBy(x => x.Value).Where(w => w.Count() > 3).Count() > 0 &&
+            if (player1Dices.GroupBy(g=>g.Value).Distinct().Count() == 1 &&
+                player2Dices.GroupBy(g => g.Value).Distinct().Count() == 1 &&
                 player1Dices.First().Value != player2Dices.First().Value)
             {
                 DicesCategory = CategoryEnum.AllOfKind;
