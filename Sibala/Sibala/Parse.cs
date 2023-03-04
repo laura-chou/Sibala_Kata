@@ -17,11 +17,11 @@ namespace Sibala
             {
                 new Player
                 {
-                    Name = player1Name,
+                    Name = player1Name
                 },
                 new Player
                 {
-                    Name = player2Name,
+                    Name = player2Name
                 }
             };
         }
