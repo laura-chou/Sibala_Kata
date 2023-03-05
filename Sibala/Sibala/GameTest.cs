@@ -21,6 +21,7 @@ namespace Sibala
         [TestCase("Black: 4 4 4 4  White: 6 6 6 6", "Black win. - with all of a kind: 4")]
         [TestCase("Black: 6 6 6 6  White: 4 4 4 4", "White win. - with all of a kind: 4")]
         [TestCase("Black: 1 1 1 1  White: 4 4 4 4", "Black win. - with all of a kind: 1")]
+        [TestCase("Black: 4 4 4 4  White: 1 1 1 1", "White win. - with all of a kind: 1")]
         public void A01_BothAllOfKind(string input, string expected)
         {
             var actual = _game.ShowResult(input);
