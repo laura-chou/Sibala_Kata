@@ -24,12 +24,16 @@ namespace Sibala
         [TestCase("Black: 4 4 4 4  White: 1 1 1 1", "White win. - with all of a kind: 1")]
         public void A01_BothAllOfKind(string input, string expected)
         {
-            var actual = _game.ShowResult(input);
-            actual.Should().Be(expected);
+            AssertShowResultShouldRetrun(input, expected);
         }
         
         [TestCase("Black: 2 5 3 3  White: 2 2 1 3", "Black win. - with normal point: 7")]
         public void A02_BothNormalPoint(string input, string expected)
+        {
+            AssertShowResultShouldRetrun(input, expected);
+        }
+
+        private void AssertShowResultShouldRetrun(string input, string expected)
         {
             var actual = _game.ShowResult(input);
             actual.Should().Be(expected);
