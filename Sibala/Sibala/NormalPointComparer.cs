@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Sibala
 {
-    public class NormalPoint
+    public class NormalPointComparer : IComparer
     {
         public string WinnerPoint { get; set; }
         public string WinnerCategory => "normal point";
