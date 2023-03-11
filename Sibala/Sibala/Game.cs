@@ -12,17 +12,17 @@ namespace Sibala
             var parse = new Parse();
             var parser = parse.Parser(input);
 
-            var player1Dice = parser[0].Dices.First().Value;
-            var player2Dice = parser[1].Dices.First().Value;
+            var player1Dices = parser[0].Dices;
+            var player2Dices = parser[1].Dices;
 
-            var diceOrder = new List<int> { 2, 3, 5, 6, 4, 1 };
-            var compareDice = diceOrder.IndexOf(player1Dice) > diceOrder.IndexOf(player2Dice);
+            var compare = new AllOfKindComparer();
+            var compareResult = compare.Compare(player1Dices, player2Dices);
             
-            if (player1Dice != player2Dice)
+            if (compareResult != 0)
             {
-                var winnerPlayer = compareDice ? parser[0].Name : parser[1].Name;
-                var winnerCategory = "all of a kind";
-                var winnerPoint = compareDice ? player1Dice : player2Dice;
+                var winnerPlayer = compareResult > 0 ? parser[0].Name : parser[1].Name;
+                var winnerCategory = compare.WinnerCategory;
+                var winnerPoint = compare.WinnerPoint;
 
                 return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
             }
