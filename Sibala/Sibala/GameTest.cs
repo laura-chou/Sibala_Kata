@@ -37,6 +37,12 @@ namespace Sibala
             AssertShowResultShouldRetrun(input, expected);
         }
 
+        [TestCase("Black: 6 6 6 6  White: 3 1 3 5", "Black win. - with all of a kind: 6")]
+        public void A03_DifferentCategory(string input, string expected)
+        {
+            AssertShowResultShouldRetrun(input, expected);
+        }
+
         private void AssertShowResultShouldRetrun(string input, string expected)
         {
             var actual = _game.ShowResult(input);
