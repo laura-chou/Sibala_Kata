@@ -19,7 +19,7 @@ namespace Sibala
 
             compare = new AllOfKindComparer();
 
-            if (player1Dices.GroupBy(g => g.Value).Count(c => c.Count() == 2) == 1)
+            if (player1Dices.GroupBy(g => g.Value).Count(c => c.Count() == 2) > 0)
             {
                 compare = new NormalPointComparer();
             }
