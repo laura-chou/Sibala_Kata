@@ -39,6 +39,7 @@ namespace Sibala
 
         [TestCase("Black: 6 6 6 6  White: 3 1 3 5", "Black win. - with all of a kind: 6")]
         [TestCase("Black: 4 1 4 3  White: 1 1 1 1", "White win. - with all of a kind: 1")]
+        [TestCase("Black: 2 5 1 5  White: 1 3 2 4", "Black win. - with normal point: 3")]
         public void A03_DifferentCategory(string input, string expected)
         {
             AssertShowResultShouldRetrun(input, expected);
