@@ -11,15 +11,16 @@ namespace Sibala
             var playerSection = input.Split("  ", StringSplitOptions.RemoveEmptyEntries);
             var player1Name = playerSection[0].Split(":", StringSplitOptions.RemoveEmptyEntries)[0];
             var player2Name = playerSection[1].Split(":", StringSplitOptions.RemoveEmptyEntries)[0];
+
             return new List<Player>
             {
                 new Player
                 {
-                    Name = player1Name,
+                    Name = player1Name
                 },
                 new Player
                 {
-                    Name = player2Name,
+                    Name = player2Name
                 }
             };
         }
