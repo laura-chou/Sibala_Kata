@@ -1,4 +1,6 @@
 ﻿
+using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Sibala
@@ -13,7 +15,9 @@ namespace Sibala
             var player1Point = parser[0].Dices.First();
             var player2Point = parser[1].Dices.First();
 
-            var comparePoint = player1Point.Value > player2Point.Value;
+            var diceOrder = new List<int> { 2, 3, 5, 6, 4, 1 };
+            
+            var comparePoint = diceOrder.IndexOf(player1Point.Value) > diceOrder.IndexOf(player2Point.Value);
 
             if (player1Point.Value != player2Point.Value)
             {
