@@ -15,11 +15,17 @@ namespace Sibala
 
             var comparePoint = player1Point.Value > player2Point.Value;
 
-            var winnerPlayer = comparePoint ? parser[0].Name : parser[1].Name;
-            var winnerCategory = "all of a kind";
-            var winnerPoint = comparePoint ? player1Point.Output : player2Point.Output;
+            if (player1Point.Value != player2Point.Value)
+            {
+                var winnerPlayer = comparePoint ? parser[0].Name : parser[1].Name;
+                var winnerCategory = "all of a kind";
+                var winnerPoint = comparePoint ? player1Point.Output : player2Point.Output;
 
-            return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
+                return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
+            }
+
+            return "Tie";
+            
         }
     }
 }
