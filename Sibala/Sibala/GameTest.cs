@@ -43,6 +43,7 @@ namespace Sibala
 
         [Test]
         [TestCase("Black: 6 6 6 6  White: 3 1 3 5", "Black win. - with all of a kind: 6")]
+        [TestCase("Black: 4 1 4 3  White: 1 1 1 1", "White win. - with all of a kind: 1")]
         public void A03_DifferentCategory(string input, string expected)
         {
             var actual = _game.ShowResult(input);
