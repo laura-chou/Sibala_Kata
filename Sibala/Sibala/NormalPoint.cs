@@ -18,6 +18,14 @@ namespace Sibala
             
             var compareDice = player1Point - player2Point;
 
+            if (player1Point == player2Point)
+            {
+                var player1MaxPoint = player1Dices.Except(repeatDices1).Max(m => m.Value);
+                var player2MaxPoint = player2Dices.Except(repeatDices2).Max(m => m.Value);
+
+                compareDice = player1MaxPoint - player2MaxPoint;
+            }
+
             if (compareDice != 0)
             {
                 WinnerPoint = (compareDice > 0) ? player1Point.ToString() : player2Point.ToString();
