@@ -46,6 +46,7 @@ namespace Sibala
         [TestCase("Black: 4 1 4 3  White: 1 1 1 1", "White win. - with all of a kind: 1")]
         [TestCase("Black: 2 5 1 5  White: 1 3 2 4", "Black win. - with normal point: 3")]
         [TestCase("Black: 5 5 5 1  White: 5 5 6 6", "White win. - with normal point: 12")]
+        [TestCase("Black: 1 3 3 3  White: 6 3 4 1", "Tie")]
         public void A03_DifferentCategory(string input, string expected)
         {
             var actual = _game.ShowResult(input);
