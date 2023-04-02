@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sibala
 {
@@ -14,10 +15,15 @@ namespace Sibala
             foreach (var player in playerSection)
             {
                 var playerName = player.Split(":", StringSplitOptions.RemoveEmptyEntries)[0];
+                var playerDices = player.Split(":", StringSplitOptions.RemoveEmptyEntries)[1]
+                    .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                    .Select(dice => new Dices { Value = int.Parse(dice), Output = dice })
+                    .ToList();
 
                 playerInfo.Add(new Player
                 {
-                    Name = playerName
+                    Name = playerName,
+                    Dices = new List<Dices>(playerDices)
                 });
             }
 
