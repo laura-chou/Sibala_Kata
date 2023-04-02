@@ -7,17 +7,21 @@ namespace Sibala
     {
         public List<Player> Parser(string input)
         {
-            return new List<Player>
+            var playerSection = input.Split("  ", StringSplitOptions.RemoveEmptyEntries);
+
+            var playerInfo = new List<Player>();
+
+            foreach (var player in playerSection)
             {
-                new Player
+                var playerName = player.Split(":", StringSplitOptions.RemoveEmptyEntries)[0];
+
+                playerInfo.Add(new Player
                 {
-                    Name = "Black"
-                },
-                new Player
-                {
-                    Name = "White"
-                }
+                    Name = playerName
+                });
             }
+
+            return playerInfo;
         }
     }
 }
