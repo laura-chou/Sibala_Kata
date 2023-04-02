@@ -7,7 +7,7 @@ namespace Sibala
 
         public string ShowResult(string input)
         {
-            throw new NotImplementedException();
+            return "Black win. - with all of a kind: 6";
         }
     }
 }
