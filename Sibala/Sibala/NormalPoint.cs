@@ -26,7 +26,7 @@ namespace Sibala
 
             var compareDice = player1Point - player2Point;
 
-            if (player1Point == player2Point)
+            if (player1Point == player2Point && player1Point != 0)
             {
                 var player1MaxPoint = player1Dices.Except(repeatDices1).Max(m => m.Value);
                 var player2MaxPoint = player2Dices.Except(repeatDices2).Max(m => m.Value);
