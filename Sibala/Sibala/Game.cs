@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Sibala
 {
@@ -7,9 +8,13 @@ namespace Sibala
 
         public string ShowResult(string input)
         {
-            //var parse = new Parse();
-            //var parser = parse.Parser(input);
-            return "Black win. - with all of a kind: 6";
+            var parse = new Parse();
+            var parser = parse.Parser(input);
+
+            var winnerPlayer = parser[0].Name;
+            var winnerCategory = "all of a kind";
+            var winnerPoint = parser[0].Dices.First().Output;
+            return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
         }
     }
 }
