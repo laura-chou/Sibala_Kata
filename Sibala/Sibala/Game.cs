@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Sibala
@@ -18,9 +20,11 @@ namespace Sibala
 
             if (comparePoint != 0)
             {
-                var winnerPlayer = player1Point.Value > player2Point.Value ? parser[0].Name : parser[1].Name;
+                var diceOrder = new List<int> { 2, 3, 5, 6, 4, 1 };
+
+                var winnerPlayer = diceOrder.IndexOf(player1Point.Value) > diceOrder.IndexOf(player2Point.Value) ? parser[0].Name : parser[1].Name;
                 var winnerCategory = "all of a kind";
-                var winnerPoint = player1Point.Value > player2Point.Value ? player1Point.Output : player2Point.Output;
+                var winnerPoint = diceOrder.IndexOf(player1Point.Value) > diceOrder.IndexOf(player2Point.Value) ? player1Point.Output : player2Point.Output;
                 return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
             }
 
