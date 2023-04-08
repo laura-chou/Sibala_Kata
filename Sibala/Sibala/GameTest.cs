@@ -27,5 +27,13 @@ namespace Sibala
             var actual = _game.ShowResult(input);
             actual.Should().Be(expected);
         }
+
+        [Test]
+        [TestCase("Black: 2 5 3 3  White: 2 2 1 3", "Black win. - with normal point: 7")]
+        public void A02_BothNormalPoint(string input, string expected)
+        {
+            var actual = _game.ShowResult(input);
+            actual.Should().Be(expected);
+        }
     }
 }
