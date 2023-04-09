@@ -13,16 +13,22 @@ namespace Sibala
             var repeatDices1 = player1Dices
                 .GroupBy(dices => dices.Value)
                 .OrderBy(dice => dice.Key)
-                .First(dice => dice.Count() == 2)
-                .ToList();
+                .FirstOrDefault(dice => dice.Count() == 2);
             var repeatDices2 = player2Dices
                 .GroupBy(dices => dices.Value)
                 .OrderBy(dice => dice.Key)
-                .First(dice => dice.Count() == 2)
-                .ToList();
+                .FirstOrDefault(dice => dice.Count() == 2);
 
-            var player1Point = player1Dices.Except(repeatDices1).Sum(dice => dice.Value);
-            var player2Point = player2Dices.Except(repeatDices2).Sum(dice => dice.Value);
+            var player1Point = 0;
+            var player2Point = 0;
+            if (repeatDices1 != null)
+            {
+                player1Point = player1Dices.Except(repeatDices1).Sum(dice => dice.Value);
+            }
+            if (repeatDices2 != null)
+            {
+                player2Point = player2Dices.Except(repeatDices2).Sum(dice => dice.Value);
+            }
 
             var compareDice = player1Point - player2Point;
 
