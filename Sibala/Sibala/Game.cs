@@ -20,11 +20,12 @@ namespace Sibala
 
             ICompare compare;
 
-            compare = new AllOfKind();
+            compare = new NormalPoint();
 
-            if (player1Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 2) > 0)
+            if (player1Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 4) > 0 ||
+                player2Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 4) > 0)
             {
-                compare = new NormalPoint();
+                compare = new AllOfKind();
             }
 
             var compareResult = compare.Compare(player1Dices, player2Dices);
