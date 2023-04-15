@@ -6,7 +6,10 @@ namespace Sibala
     {
         public string ShowResult(string input)
         {
-            return "Black win. - with normal point: 7";
+            var winnerPlayer = "Black";
+            var winnerCategory = "normal point";
+            var winnerPoint = "7";
+            return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
         }
     }
 }
