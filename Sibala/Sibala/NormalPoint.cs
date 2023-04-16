@@ -31,10 +31,18 @@ namespace Sibala
 
             var compareResult = player1Point - player2Point;
 
+            if (player1Point == player2Point)
+            {
+                var maxDice1 = player1Dices.Except(repeatDices1).Max(dice => dice.Value);
+                var maxDice2 = player2Dices.Except(repeatDices2).Max(dice => dice.Value);
+
+                compareResult = maxDice1 - maxDice2;
+            }
+
             if (compareResult != 0)
             {
                 WinnerPoint = compareResult > 0 ? player1Point.ToString() : player2Point.ToString();
-            }
+            } 
 
             return compareResult;
         }
