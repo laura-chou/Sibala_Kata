@@ -7,11 +7,13 @@ namespace Sibala
     public class GameTest
     {
         [Test]
-        public void A01_BothNormalPoint()
+        [TestCase("Black: 2 5 3 3  White: 2 2 1 3", "Black win. - with normal point: 7")]
+        [TestCase("Black: 5 3 5 4  White: 2 6 2 3", "White win. - with normal point: 9")]
+        public void A01_BothNormalPoint(string input, string expected)
         {
             var game = new Game();
-            var actual = game.ShowResult("Black: 2 5 3 3  White: 2 2 1 3");
-            actual.Should().Be("Black win. - with normal point: 7");
+            var actual = game.ShowResult(input);
+            actual.Should().Be(expected);
         }
     }
 }
