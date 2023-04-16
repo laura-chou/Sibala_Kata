@@ -34,10 +34,15 @@ namespace Sibala
 
             var compareResult = player1Point - player2Point;
 
-            var winnerPlayer = compareResult > 0 ? player1Name : player2Name;
-            var winnerCategory = "normal point";
-            var winnerPoint = compareResult > 0 ? player1Point : player2Point;
-            return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
+            if (compareResult != 0)
+            {
+                var winnerPlayer = compareResult > 0 ? player1Name : player2Name;
+                var winnerCategory = "normal point";
+                var winnerPoint = compareResult > 0 ? player1Point : player2Point;
+                return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
+            }
+
+            return "Tie";
         }
     }
 }
