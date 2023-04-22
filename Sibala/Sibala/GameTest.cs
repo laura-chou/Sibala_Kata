@@ -18,5 +18,14 @@ namespace Sibala
             var actual = game.ShowResult(input);
             actual.Should().Be(expected);
         }
+
+        [Test]
+        [TestCase("Black: 6 6 6 6  White: 3 3 3 3", "Black win. - with all of a kind: 6")]
+        public void A02_BothAllOfKind(string input, string expected)
+        {
+            var game = new Game();
+            var actual = game.ShowResult(input);
+            actual.Should().Be(expected);
+        }
     }
 }
