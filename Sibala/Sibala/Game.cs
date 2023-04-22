@@ -16,6 +16,11 @@ namespace Sibala
             var player2Name = parser[1].Name;
             var player2Dices = parser[1].Dices;
 
+            if (player1Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 4) > 0)
+            {
+                return "Black win. - with all of a kind: 6";
+            }
+
             var compare = new NormalPoint();
             var compareResult = compare.Compare(player1Dices, player2Dices);
 
