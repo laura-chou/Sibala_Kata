@@ -17,11 +17,25 @@ namespace Sibala
             {
                 new Player
                 { 
-                    Name = "Black" 
+                    Name = "Black" ,
+                    Dices = new List<Dices>
+                    {
+                        new Dices{ Value = 2, Output = "2" },
+                        new Dices{ Value = 5, Output = "5" },
+                        new Dices{ Value = 3, Output = "3" },
+                        new Dices{ Value = 3, Output = "3" }
+                    }
                 },
                 new Player
                 {
-                    Name = "White"
+                    Name = "White",
+                    Dices = new List<Dices>
+                    {
+                        new Dices{ Value = 2, Output = "2" },
+                        new Dices{ Value = 2, Output = "2" },
+                        new Dices{ Value = 1, Output = "1" },
+                        new Dices{ Value = 3, Output = "3" }
+                    }
                 }
             };
             actual.Should().BeEquivalentTo(expected);
