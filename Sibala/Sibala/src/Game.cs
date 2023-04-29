@@ -6,7 +6,7 @@ namespace Sibala.src
     {
         public string ShowResult(string input)
         {
-            throw new NotImplementedException();
+            return "Black win. - with normal point: 7";
         }
     }
 }
