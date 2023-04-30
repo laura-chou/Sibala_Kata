@@ -12,19 +12,11 @@ namespace Sibala.src
 
         public int Compare(List<Dices> player1Dices, List<Dices> player2Dices)
         {
-            var player1repeatDices = player1Dices
-                .GroupBy(dices => dices.Value)
-                .OrderBy(dices => dices.Key)
-                .First(dice => dice.Count() == 2)
-                .ToList();
-            var player1Point = player1Dices.Except(player1repeatDices).Sum(dice => dice.Value);
+            var player1repeatDices = GetRepeatDices(player1Dices);
+            var player1Point = GetPlayerPoint(player1Dices, player1repeatDices);
 
-            var player2repeatDices = player2Dices
-                .GroupBy(dices => dices.Value)
-                .OrderBy(dices => dices.Key)
-                .First(dice => dice.Count() == 2)
-                .ToList();
-            var player2Point = player2Dices.Except(player2repeatDices).Sum(dice => dice.Value);
+            var player2repeatDices = GetRepeatDices(player2Dices);
+            var player2Point = GetPlayerPoint(player2Dices, player2repeatDices);
 
             var compareResult = player1Point - player2Point;
 
@@ -42,6 +34,20 @@ namespace Sibala.src
             }
 
             return compareResult;
+        }
+
+        private int GetPlayerPoint(List<Dices> player1Dices, List<Dices> player1repeatDices)
+        {
+            return player1Dices.Except(player1repeatDices).Sum(dice => dice.Value);
+        }
+
+        private List<Dices> GetRepeatDices(List<Dices> player1Dices)
+        {
+            return player1Dices
+                            .GroupBy(dices => dices.Value)
+                            .OrderBy(dices => dices.Key)
+                            .First(dice => dice.Count() == 2)
+                            .ToList();
         }
     }
 }
