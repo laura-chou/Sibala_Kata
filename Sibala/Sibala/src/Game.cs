@@ -16,10 +16,16 @@ namespace Sibala.src
             var compare = new NormalPoint();
             var compareResult = compare.Compare(player1Dices, player2Dices);
 
-            var winnerPlayer = (compareResult > 0) ? parse[0].Name : parse[1].Name;
-            var winnerCategory = compare.WinnerCategory;
-            var winnerPoint = compare.WinnerPoint;
-            return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
+            if (compareResult != 0)
+            {
+
+                var winnerPlayer = (compareResult > 0) ? parse[0].Name : parse[1].Name;
+                var winnerCategory = compare.WinnerCategory;
+                var winnerPoint = compare.WinnerPoint;
+                return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
+            }
+
+            return "Tie";
         }
     }
 }
