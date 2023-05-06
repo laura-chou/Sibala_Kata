@@ -15,7 +15,16 @@ namespace Sibala.src
             
             if (player1Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 4) > 0)
             {
-                return "Black win. - with all of a kind: 6";
+                var compare1 = new AllOfKind();
+                var compareResult1 = compare1.Compare(player1Dices, player2Dices);
+
+                if (compareResult1 != 0)
+                {
+                    var winnerPlayer = (compareResult1 > 0) ? parse[0].Name : parse[1].Name;
+                    var winnerCategory = compare1.WinnerCategory;
+                    var winnerPoint = compare1.WinnerPoint;
+                    return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
+                }
             }
 
             var compare = new NormalPoint();
