@@ -14,7 +14,9 @@ namespace Sibala.src
             var player1Point = player1Dices.First();
             var player2Point = player2Dices.First();
 
-            var compareResult = player1Point.Value - player2Point.Value;
+            var diceOrder = new List<int> { 2, 3, 5, 6, 4, 1 };
+
+            var compareResult = diceOrder.IndexOf(player1Point.Value) - diceOrder.IndexOf(player2Point.Value);
 
             if (compareResult != 0)
             {
