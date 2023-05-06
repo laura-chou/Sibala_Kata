@@ -12,22 +12,14 @@ namespace Sibala.src
 
             var player1Dices = parse[0].Dices;
             var player2Dices = parse[1].Dices;
-            
+
+            ICompare compare = new NormalPoint();
+
             if (player1Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 4) > 0)
             {
-                var compare1 = new AllOfKind();
-                var compareResult1 = compare1.Compare(player1Dices, player2Dices);
-
-                if (compareResult1 != 0)
-                {
-                    var winnerPlayer = (compareResult1 > 0) ? parse[0].Name : parse[1].Name;
-                    var winnerCategory = compare1.WinnerCategory;
-                    var winnerPoint = compare1.WinnerPoint;
-                    return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
-                }
+                compare = new AllOfKind();
             }
 
-            var compare = new NormalPoint();
             var compareResult = compare.Compare(player1Dices, player2Dices);
 
             if (compareResult != 0)

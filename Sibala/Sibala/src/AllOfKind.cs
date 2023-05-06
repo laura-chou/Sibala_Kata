@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Sibala.src
 {
-    public class AllOfKind
+    public class AllOfKind : ICompare
     {
         public string WinnerCategory => "all of a kind";
         public string WinnerPoint { get; private set; }
