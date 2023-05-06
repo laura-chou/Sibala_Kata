@@ -26,6 +26,13 @@ namespace Sibala
             AssertResultShouldReturn(input, expected);
         }
 
+        [Test]
+        [TestCase("Black: 6 6 6 6  White: 3 3 3 3", "Black win. - with all of a kind: 6")]
+        public void A02_BothAllOfKind(string input, string expected)
+        {
+            AssertResultShouldReturn(input, expected);
+        }
+
         private void AssertResultShouldReturn(string input, string expected)
         {
             var actual = _game.ShowResult(input);
