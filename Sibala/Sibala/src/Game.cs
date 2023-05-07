@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Sibala.src
@@ -15,8 +16,7 @@ namespace Sibala.src
 
             ICompare compare = new NormalPoint();
 
-            if (player1Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 4) > 0 ||
-                player2Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 4) > 0)
+            if (IsBothAllOfKind(player1Dices, player2Dices))
             {
                 compare = new AllOfKind();
             }
@@ -32,6 +32,12 @@ namespace Sibala.src
             }
 
             return "Tie";
+        }
+
+        private bool IsBothAllOfKind(List<Dices> player1Dices, List<Dices> player2Dices)
+        {
+            return player1Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 4) > 0 ||
+                player2Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 4) > 0;
         }
     }
 }
