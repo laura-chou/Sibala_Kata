@@ -36,18 +36,20 @@ namespace Sibala.src
             return compareResult;
         }
 
-        private int GetPlayerPoint(List<Dices> player1Dices, List<Dices> player1repeatDices)
+        private int GetPlayerPoint(List<Dices> playerDices, List<Dices> playerRepeatDices)
         {
-            return player1Dices.Except(player1repeatDices).Sum(dice => dice.Value);
+            return playerRepeatDices.Count == 0 ? 0 :
+                playerDices.Except(playerRepeatDices).Sum(dice => dice.Value);
         }
 
         private List<Dices> GetRepeatDices(List<Dices> player1Dices)
         {
-            return player1Dices
-                            .GroupBy(dices => dices.Value)
-                            .OrderBy(dices => dices.Key)
-                            .First(dice => dice.Count() == 2)
-                            .ToList();
+            var repeatDices = player1Dices
+                .GroupBy(dices => dices.Value)
+                .OrderBy(dices => dices.Key)
+                .FirstOrDefault(dice => dice.Count() == 2);
+
+            return repeatDices == null ? new List<Dices>() : repeatDices.ToList();
         }
     }
 }
