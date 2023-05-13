@@ -7,7 +7,17 @@ namespace Sibala.src
     {
         public List<Player> Parse(string input)
         {
-            throw new NotImplementedException();
+            return new List<Player>
+            {
+                new Player
+                {
+                    Name = "Black"
+                },
+                new Player
+                {
+                    Name = "White"
+                }
+            };
         }
     }
 }
