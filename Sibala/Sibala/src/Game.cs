@@ -12,6 +12,11 @@ namespace Sibala.src
             var parser = new Parser();
             var parse = parser.Parse(input);
 
+            if (parse[0].Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 2) > 0)
+            {
+                return "Black win. - with normal point: 7";
+            }
+
             var compare = new AllOfKindCompare();
             var compareResult = compare.CompareDice(parse[0].Dices, parse[1].Dices);
             
