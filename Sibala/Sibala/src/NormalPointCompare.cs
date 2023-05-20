@@ -10,18 +10,15 @@ namespace Sibala.src
 
         public int CompareDice(List<Dices> player1Dices, List<Dices> player2Dices)
         {
-            var player1RepeatDices = GetRepeatDices(player1Dices);
-            var player2RepeatDices = GetRepeatDices(player2Dices);
-
-            var player1Point = GetPlayerPoint(player1Dices, player1RepeatDices);
-            var player2Point = GetPlayerPoint(player2Dices, player2RepeatDices);
+            var player1Point = GetPlayerPoint(player1Dices);
+            var player2Point = GetPlayerPoint(player2Dices);
 
             var compare = player1Point - player2Point;
 
             if (compare == 0)
             {
-                var maxDice1 = GetMaxDice(player1Dices, player1RepeatDices);
-                var maxDice2 = GetMaxDice(player2Dices, player2RepeatDices);
+                var maxDice1 = GetMaxDice(player1Dices);
+                var maxDice2 = GetMaxDice(player2Dices);
 
                 compare = maxDice1 - maxDice2;
             }
@@ -31,15 +28,17 @@ namespace Sibala.src
             return compare;
         }
 
-        private int GetMaxDice(List<Dices> playerDices, IGrouping<int, Dices> playerRepeatDices)
+        private int GetMaxDice(List<Dices> playerDices)
         {
-            return playerDices.Except(playerRepeatDices).Max(dice => dice.Value);
+            return playerDices.Except(GetRepeatDices(playerDices)).Max(dice => dice.Value);
         }
 
-        private int GetPlayerPoint(List<Dices> playerDices, IGrouping<int, Dices> playerRepeatDices)
+        private int GetPlayerPoint(List<Dices> playerDices)
         {
-            return playerRepeatDices == null ? 0 :
-                playerDices.Except(playerRepeatDices).Sum(dice => dice.Value);
+            var playerRepeatDice = GetRepeatDices(playerDices);
+
+            return playerRepeatDice == null ? 0 :
+                playerDices.Except(playerRepeatDice).Sum(dice => dice.Value);
         }
 
         private IGrouping<int, Dices> GetRepeatDices(List<Dices> playerDices)
