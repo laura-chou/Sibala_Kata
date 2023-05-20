@@ -24,10 +24,15 @@ namespace Sibala.src
 
             var compare = player1Point - player2Point;
 
-            if (compare != 0)
+            if (compare == 0)
             {
-                WinnerPoint = compare > 0 ? player1Point.ToString() : player2Point.ToString();
+                var maxDice1 = player1Dices.Except(player1RepeatDices).Max(dice => dice.Value);
+                var maxDice2 = player2Dices.Except(player2RepeatDices).Max(dice => dice.Value);
+
+                compare = maxDice1 - maxDice2;
             }
+
+            WinnerPoint = compare > 0 ? player1Point.ToString() : player2Point.ToString();
 
             return compare;
         }
