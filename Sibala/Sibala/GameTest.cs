@@ -51,5 +51,13 @@ namespace Sibala
             var actual = _game.ShowResult(input);
             actual.Should().Be(expected);
         }
+
+        [Test]
+        [TestCase("Black: 1 3 3 3  White: 6 3 4 1", "Tie")]
+        public void A04_BothNoPoint(string input, string expected)
+        {
+            var actual = _game.ShowResult(input);
+            actual.Should().Be(expected);
+        }
     }
 }
