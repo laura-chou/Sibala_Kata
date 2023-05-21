@@ -19,14 +19,13 @@ namespace Sibala.src
 
             ICompare compare = new NormalPointCompare();
 
-            if (player1Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 4) > 0 ||
-                player2Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 4) > 0)
+            if (IsAllOfKind(player1Dices, player2Dices))
             {
                 compare = new AllOfKindCompare();
             }
 
             var compareResult = compare.CompareDice(player1Dices, player2Dices);
-            
+
             if (compareResult != 0)
             {
                 var winnerPlayer = compareResult > 0 ? player1Name : player2Name;
@@ -36,6 +35,12 @@ namespace Sibala.src
             }
 
             return "Tie";
+        }
+
+        private bool IsAllOfKind(List<Dices> player1Dices, List<Dices> player2Dices)
+        {
+            return player1Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 4) > 0 ||
+                player2Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 4) > 0;
         }
     }
 }
