@@ -30,7 +30,10 @@ namespace Sibala.src
 
         private int GetMaxDice(List<Dices> playerDices)
         {
-            return playerDices.Except(GetRepeatDices(playerDices)).Max(dice => dice.Value);
+            var playerRepeatDice = GetRepeatDices(playerDices);
+
+            return playerRepeatDice == null ? 0 :
+                playerDices.Except(playerRepeatDice).Max(dice => dice.Value);
         }
 
         private int GetPlayerPoint(List<Dices> playerDices)
