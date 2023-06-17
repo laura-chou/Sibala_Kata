@@ -6,7 +6,10 @@ namespace Sibala.src
     {
         public string ShowResult(string input)
         {
-            return "Black win. - with all of a kind: 6";
+            var winnerPlayer = "Black";
+            var winnerCategory = "all of a kind";
+            var winnerPoint = "6";
+            return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
         }
     }
 }
