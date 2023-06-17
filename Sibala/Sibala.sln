@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33130.400
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sibala", "Sibala\Sibala.csproj", "{6168CF51-874F-4A68-8EB6-DBFAFAF19F38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sibala", "Sibala\Sibala.csproj", "{6168CF51-874F-4A68-8EB6-DBFAFAF19F38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
