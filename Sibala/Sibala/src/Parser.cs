@@ -27,19 +27,23 @@ namespace Sibala.src
                     Output = dice 
                 })
                 .ToList();
+
+            var player1 = new Player
+            {
+                Name = player1Name,
+                Dices = player1Dices
+            };
+
+            var player2 = new Player
+            {
+                Name = player2Name,
+                Dices = player2Dices
+            };
+
             return new List<Player>
             {
-                new Player
-                {
-                    Name = player1Name,
-                    Dices = player1Dices
-                },
-
-                new Player
-                {
-                    Name = player2Name,
-                    Dices = player2Dices
-                }
+                player1,
+                player2
             };
         }
     }
