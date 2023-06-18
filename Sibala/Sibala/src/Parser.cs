@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,18 +10,16 @@ namespace Sibala.src
         {
             var playerSections = input.Split("  ", StringSplitOptions.RemoveEmptyEntries);
 
-            return new List<Player>
-            {
-                GetPlayer(playerSections, 0),
-                GetPlayer(playerSections, 1)
-            };
+            return playerSections
+                .Select(section => GetPlayer(section))
+                .ToList();
         }
 
-        private static Player GetPlayer(string[] playerSections, int index)
+        private static Player GetPlayer(string playerSection)
         {
-            var playerName = playerSections[index].Split(":", StringSplitOptions.RemoveEmptyEntries)[0];
+            var playerName = playerSection.Split(":", StringSplitOptions.RemoveEmptyEntries)[0];
 
-            var playerDices = playerSections[index].Split(":", StringSplitOptions.RemoveEmptyEntries)[1]
+            var playerDices = playerSection.Split(":", StringSplitOptions.RemoveEmptyEntries)[1]
                 .Split(" ", StringSplitOptions.RemoveEmptyEntries)
                 .Select(dice => new Dice
                 {
