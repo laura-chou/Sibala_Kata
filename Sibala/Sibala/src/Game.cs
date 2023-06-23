@@ -16,12 +16,13 @@ namespace Sibala.src
             var player2Dices = parse[1].Dices;
 
             var comparer = new AllOfKindComparer();
-            int compareResult = comparer.Compare(player1Dices, player2Dices, out var winnerPoint);
+            int compareResult = comparer.Compare(player1Dices, player2Dices);
             
             if (compareResult != 0)
             {
                 var winnerPlayer = compareResult > 0 ? parse[0].Name : parse[1].Name;
-                var winnerCategory = "all of a kind";
+                var winnerCategory = comparer.WinnerCategory;
+                var winnerPoint = comparer.WinnerPoint;
                 return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
             }
 
