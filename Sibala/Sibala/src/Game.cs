@@ -17,11 +17,12 @@ namespace Sibala.src
 
             if (compareResult !=  0)
             {
-                var winnerPlayer = player1Dices.Value > player2Dices.Value ? parse[0].Name : parse[1].Name;
+                var winnerPlayer = compareResult > 0 ? parse[0].Name : parse[1].Name;
                 var winnerCategory = "all of a kind";
-                var winnerPoint = player1Dices.Value > player2Dices.Value ? player1Dices.Output : player2Dices.Output;
+                var winnerPoint = compareResult > 0 ? player1Dices.Output : player2Dices.Output;
                 return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
             }
+
             return "Tie";
         }
     }
