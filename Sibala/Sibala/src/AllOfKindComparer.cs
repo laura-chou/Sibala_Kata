@@ -13,12 +13,15 @@ namespace Sibala.src
         {
             var diceOrder = new List<int> { 2, 3, 5, 6, 4, 1 };
 
-            var compareResult = diceOrder.IndexOf(player1Dices.First().Value)
-                - diceOrder.IndexOf(player2Dices.First().Value);
+            var dicePoint1 = player1Dices.First();
+            var dicePoint2 = player2Dices.First();
+
+            var compareResult = diceOrder.IndexOf(dicePoint1.Value)
+                                - diceOrder.IndexOf(dicePoint2.Value);
 
             if (compareResult != 0)
             {
-                WinnerPoint = compareResult > 0 ? player1Dices.First().Output : player2Dices.First().Output;
+                WinnerPoint = compareResult > 0 ? dicePoint1.Output : dicePoint2.Output;
             }
             return compareResult;
         }
