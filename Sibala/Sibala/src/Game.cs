@@ -15,6 +15,11 @@ namespace Sibala.src
             var player1Dices = players[0].Dices;
             var player2Dices = players[1].Dices;
 
+            if (player1Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 2) == 1)
+            {
+                return "Black win. - with normal point: 7";
+            }
+
             var comparer = new AllOfKindComparer();
             int compareResult = comparer.Compare(player1Dices, player2Dices);
             
