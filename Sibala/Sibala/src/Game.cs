@@ -17,9 +17,17 @@ namespace Sibala.src
 
             if (player1Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 2) == 1)
             {
+                var repeatDices1 = player1Dices
+                    .GroupBy(dices => dices.Value)
+                    .First(dice => dice.Count() == 2)
+                    .ToList();
+
+                var player1Point = player1Dices.Except(repeatDices1).Sum(dice => dice.Value);
+
                 var winnerPlayer = players[0].Name;
                 var winnerCategory = "normal point";
-                var winnerPoint = "7";
+                var winnerPoint = player1Point;
+
                 return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
             }
 
