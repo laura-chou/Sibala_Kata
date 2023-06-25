@@ -27,6 +27,12 @@ namespace Sibala
         {
             AssertResultShouldReturn(input, expected);
         }
+        
+        [TestCase("Black: 2 5 3 3  White: 2 2 1 3", "Black win. - with normal point: 7")]
+        public void A02_BothNormalPoint(string input, string expected)
+        {
+            AssertResultShouldReturn(input, expected);
+        }
 
         private void AssertResultShouldReturn(string input, string expected)
         {
