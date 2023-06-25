@@ -17,7 +17,10 @@ namespace Sibala.src
 
             if (player1Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 2) == 1)
             {
-                return "Black win. - with normal point: 7";
+                var winnerPlayer = players[0].Name;
+                var winnerCategory = "normal point";
+                var winnerPoint = "7";
+                return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
             }
 
             var comparer = new AllOfKindComparer();
