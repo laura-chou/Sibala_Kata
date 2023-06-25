@@ -21,6 +21,7 @@ namespace Sibala
         [TestCase("Black: 2 2 2 2  White: 2 2 2 2", "Tie")]
         [TestCase("Black: 4 4 4 4  White: 6 6 6 6", "Black win. - with all of a kind: 4")]
         [TestCase("Black: 6 6 6 6  White: 4 4 4 4", "White win. - with all of a kind: 4")]
+        [TestCase("Black: 1 1 1 1  White: 4 4 4 4", "Black win. - with all of a kind: 1")]
         public void A01_BothAllOfKind(string input, string expected)
         {
             AssertResultShouldReturn(input, expected);
