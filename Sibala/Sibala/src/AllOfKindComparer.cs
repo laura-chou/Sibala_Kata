@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Sibala.src
 {
-    public class AllOfKindComparer
+    public class AllOfKindComparer : IComparer
     {
         public string WinnerCategory => "all of a kind";
 
