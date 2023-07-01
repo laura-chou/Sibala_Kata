@@ -15,25 +15,29 @@ namespace Sibala.src
             var player1Dices = players[0].Dices;
             var player2Dices = players[1].Dices;
 
+            int compareResult;
+            string winnerCategory;
+            string winnerPoint;
+
             if (player1Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 2) == 1)
             {
                 var comparer2 = new NormalPointComparer();
-                var compareResult2 = comparer2.Compare(player1Dices, player2Dices);
-
-                var winnerPlayer = compareResult2 > 0 ? players[0].Name : players[1].Name;
-                var winnerCategory = comparer2.WinnerCategory;
-                var winnerPoint = comparer2.WinnerPoint;
-                return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
+                compareResult = comparer2.Compare(player1Dices, player2Dices);
+                winnerCategory = comparer2.WinnerCategory;
+                winnerPoint = comparer2.WinnerPoint;
             }
-
-            var comparer = new AllOfKindComparer();
-            int compareResult = comparer.Compare(player1Dices, player2Dices);
+            else
+            {
+                var comparer = new AllOfKindComparer();
+                compareResult = comparer.Compare(player1Dices, player2Dices);
+                winnerCategory = comparer.WinnerCategory;
+                winnerPoint = comparer.WinnerPoint;
+            }
             
             if (compareResult != 0)
             {
                 var winnerPlayer = compareResult > 0 ? players[0].Name : players[1].Name;
-                var winnerCategory = comparer.WinnerCategory;
-                var winnerPoint = comparer.WinnerPoint;
+                
                 return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
             }
 
