@@ -18,11 +18,11 @@ namespace Sibala.src
             if (player1Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 2) == 1)
             {
                 var comparer2 = new NormalPointComparer();
-                var compareResult2 = comparer2.Compare(player1Dices, player2Dices, out var winnerPoint);
+                var compareResult2 = comparer2.Compare(player1Dices, player2Dices);
 
                 var winnerPlayer = compareResult2 > 0 ? players[0].Name : players[1].Name;
-                var winnerCategory = "normal point";
-
+                var winnerCategory = comparer2.WinnerCategory;
+                var winnerPoint = comparer2.WinnerPoint;
                 return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
             }
 

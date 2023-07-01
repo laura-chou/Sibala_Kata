@@ -5,8 +5,11 @@ namespace Sibala.src
 {
     public class NormalPointComparer
     {
+        public string WinnerCategory => "normal point";
 
-        public int Compare(List<Dice> player1Dices, List<Dice> player2Dices, out string winnerPoint)
+        public string WinnerPoint { get; private set; }
+
+        public int Compare(List<Dice> player1Dices, List<Dice> player2Dices)
         {
             var repeatDices1 = player1Dices
                 .GroupBy(dices => dices.Value)
@@ -22,7 +25,7 @@ namespace Sibala.src
 
             var compareResult = player1Point - player2Point;
 
-            winnerPoint = compareResult > 0 ? player1Point.ToString() : player2Point.ToString();
+            WinnerPoint = compareResult > 0 ? player1Point.ToString() : player2Point.ToString();
 
             return compareResult;
         }
