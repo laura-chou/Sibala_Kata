@@ -17,7 +17,8 @@ namespace Sibala.src
 
             if (player1Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 2) == 1)
             {
-                var compareResult2 = Compare(player1Dices, player2Dices, out var winnerPoint);
+                var comparer2 = new NormalPointComparer();
+                var compareResult2 = comparer2.Compare(player1Dices, player2Dices, out var winnerPoint);
 
                 var winnerPlayer = compareResult2 > 0 ? players[0].Name : players[1].Name;
                 var winnerCategory = "normal point";
@@ -37,27 +38,6 @@ namespace Sibala.src
             }
 
             return "Tie";
-        }
-
-        private int Compare(List<Dice> player1Dices, List<Dice> player2Dices, out string winnerPoint)
-        {
-            var repeatDices1 = player1Dices
-                                .GroupBy(dices => dices.Value)
-                                .First(dice => dice.Count() == 2)
-                                .ToList();
-            var repeatDices2 = player2Dices
-                .GroupBy(dices => dices.Value)
-                .First(dice => dice.Count() == 2)
-                .ToList();
-
-            var player1Point = player1Dices.Except(repeatDices1).Sum(dice => dice.Value);
-            var player2Point = player2Dices.Except(repeatDices2).Sum(dice => dice.Value);
-
-            var compareResult = player1Point - player2Point;
-
-            winnerPoint = compareResult > 0 ? player1Point.ToString() : player2Point.ToString();
-
-            return compareResult;
         }
     }
 }
