@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using FluentAssertions.Extensions;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Sibala.src
@@ -11,17 +12,28 @@ namespace Sibala.src
 
         public int Compare(List<Dice> player1Dices, List<Dice> player2Dices)
         {
-            var player1Point = CalculateNormalPoint(player1Dices);
-            var player2Point = CalculateNormalPoint(player2Dices);
+            var calDices1 = CalculateNormalPointDices(player1Dices);
+            var calDices2 = CalculateNormalPointDices(player2Dices);
+
+            var player1Point = calDices1.Sum(dice => dice.Value);
+            var player2Point = calDices2.Sum(dice => dice.Value);
 
             var compareResult = player1Point - player2Point;
 
-            WinnerPoint = compareResult > 0 ? player1Point.ToString() : player2Point.ToString();
+            if (compareResult == 0)
+            {
+                compareResult = calDices1.Max(dice => dice.Value) - calDices2.Max(dice => dice.Value);
+            }
+
+            if (compareResult != 0) 
+            {
+                WinnerPoint = compareResult > 0 ? player1Point.ToString() : player2Point.ToString();
+            }
 
             return compareResult;
         }
 
-        private static int CalculateNormalPoint(List<Dice> playerDices)
+        private static IList<Dice> CalculateNormalPointDices(List<Dice> playerDices)
         {
             var minRepeatDices = playerDices
                 .GroupBy(dices => dices.Value)
@@ -29,7 +41,7 @@ namespace Sibala.src
                 .First(dice => dice.Count() == 2)
                 .ToList();
 
-            return playerDices.Except(minRepeatDices).Sum(dice => dice.Value);
+            return playerDices.Except(minRepeatDices).ToList();
         }
     }
 }
