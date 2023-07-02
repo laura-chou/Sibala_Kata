@@ -23,12 +23,13 @@ namespace Sibala.src
 
         private static int CalculateNormalPoint(List<Dice> playerDices)
         {
-            var repeatDices = playerDices
+            var minRepeatDices = playerDices
                 .GroupBy(dices => dices.Value)
+                .OrderBy(dices => dices.Key)
                 .First(dice => dice.Count() == 2)
                 .ToList();
 
-            return playerDices.Except(repeatDices).Sum(dice => dice.Value);
+            return playerDices.Except(minRepeatDices).Sum(dice => dice.Value);
         }
     }
 }
