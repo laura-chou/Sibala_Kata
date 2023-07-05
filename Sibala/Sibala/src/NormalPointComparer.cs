@@ -12,8 +12,8 @@ namespace Sibala.src
 
         public int Compare(Dices player1Dices, Dices player2Dices)
         {
-            var calDices1 = CalculateNormalPointDices(player1Dices);
-            var calDices2 = CalculateNormalPointDices(player2Dices);
+            var calDices1 = player1Dices.CalculateNormalPointDices();
+            var calDices2 = player2Dices.CalculateNormalPointDices();
 
             var player1Point = calDices1.Sum(dice => dice.Value);
             var player2Point = calDices2.Sum(dice => dice.Value);
@@ -31,17 +31,6 @@ namespace Sibala.src
             }
 
             return compareResult;
-        }
-
-        private static IList<Dice> CalculateNormalPointDices(Dices playerDices)
-        {
-            var minRepeatDices = playerDices
-                .GroupBy(dices => dices.Value)
-                .OrderBy(dices => dices.Key)
-                .First(dice => dice.Count() == 2)
-                .ToList();
-
-            return playerDices.Except(minRepeatDices).ToList();
         }
     }
 }
