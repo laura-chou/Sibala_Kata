@@ -18,24 +18,24 @@ namespace Sibala
                 new Player
                 { 
                     Name = "Black",
-                    Dices = new List<Dice>
+                    Dices = new Dices(new List<Dice>
                     {
                         new Dice { Value = 6, Output = "6" },
                         new Dice { Value = 6, Output = "6" },
                         new Dice { Value = 6, Output = "6" },
                         new Dice { Value = 6, Output = "6" }
-                    }
+                    })
                 },
                 new Player
                 {
                     Name = "White",
-                    Dices = new List<Dice>
+                    Dices = new Dices(new List<Dice>
                     {
                         new Dice { Value = 3, Output = "3" },
                         new Dice { Value = 3, Output = "3" },
                         new Dice { Value = 3, Output = "3" },
                         new Dice { Value = 3, Output = "3" }
-                    }
+                    })
                 }
             };
             actual.Should().BeEquivalentTo(expected);

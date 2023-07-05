@@ -13,7 +13,7 @@ namespace Sibala.src
             var player1Dices = players[0].Dices;
             var player2Dices = players[1].Dices;
 
-            var dice1CategoryType = new Dices(player1Dices).GetDicesCategoryType();
+            var dice1CategoryType = player1Dices.GetDicesCategoryType();
 
             IComparer comparer;
 

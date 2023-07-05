@@ -5,6 +5,6 @@ namespace Sibala.src
     public class Player
     {
         public string Name { get; set; }
-        public List<Dice> Dices { get; set; }
+        public Dices Dices { get; set; }
     }
 }
