@@ -56,6 +56,13 @@ namespace Sibala.src
             {
                 return new AllOfKind(this);
             }
+
+            if (DiceGrouping
+                .Count(dice => dice.Count() == 2) >= 1)
+            {
+                return new NormalPoint(this);
+            }
+
             throw new NotImplementedException();
         }
 

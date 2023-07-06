@@ -12,5 +12,7 @@ namespace Sibala.src.Categories
         public override string Name => "all of a kind";
 
         public override string Output { get; }
+
+        public override CategoryType Type => CategoryType.AllOfKind;
     }
 }

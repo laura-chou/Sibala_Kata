@@ -21,15 +21,16 @@ namespace Sibala.src
             if (dice1CategoryType != dice2CategoryType)
             {
                 comparer = new DifferentCategoryComparer();
-            }
-
-            if (dice1CategoryType == CategoryType.NormalPoint)
+            } else
             {
-                comparer = new NormalPointComparer();
-            }
-            else
-            {
-                comparer = new AllOfKindComparer();
+                if (dice1CategoryType == CategoryType.NormalPoint)
+                {
+                    comparer = new NormalPointComparer();
+                }
+                else
+                {
+                    comparer = new AllOfKindComparer();
+                }
             }
 
             var compareResult = comparer.Compare(player1Dices, player2Dices);
