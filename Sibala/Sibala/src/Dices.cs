@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Sibala.src.Categories;
 
 namespace Sibala.src
 {
@@ -46,6 +47,16 @@ namespace Sibala.src
         public IEnumerator<Dice> GetEnumerator()
         {
             return _dice.GetEnumerator();
+        }
+
+        public Category GetCategory()
+        {
+            if (DiceGrouping
+                .Count(dice => dice.Count() == 4) == 1)
+            {
+                return new AllOfKind();
+            }
+            throw new NotImplementedException();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
