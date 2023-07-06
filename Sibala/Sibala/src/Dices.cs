@@ -54,7 +54,7 @@ namespace Sibala.src
             if (DiceGrouping
                 .Count(dice => dice.Count() == 4) == 1)
             {
-                return new AllOfKind();
+                return new AllOfKind(this);
             }
             throw new NotImplementedException();
         }
