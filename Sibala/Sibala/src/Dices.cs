@@ -46,7 +46,7 @@ namespace Sibala.src
                 return new NormalPoint(this);
             }
 
-            throw new NotImplementedException();
+            return new NoPoint();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
