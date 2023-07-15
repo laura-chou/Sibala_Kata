@@ -18,15 +18,20 @@ namespace Sibala.src
             if (player1Dices.GetCategory().Type != player2Dices.GetCategory().Type)
             {
                 comparer = new DifferentCategoryComparer();
-            } else
+            } 
+            else
             {
                 if (player1Dices.GetCategory().Type == CategoryType.NormalPoint)
                 {
                     comparer = new NormalPointComparer();
                 }
-                else
+                else if (player1Dices.GetCategory().Type == CategoryType.AllOfKind)
                 {
                     comparer = new AllOfKindComparer();
+                }
+                else
+                {
+                    comparer = new NoPointComparer();
                 }
             }
 
