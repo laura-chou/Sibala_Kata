@@ -47,6 +47,12 @@ namespace Sibala
             AssertResultShouldReturn(input, expected);
         }
 
+        [TestCase("Black: 1 3 3 3  White: 6 3 4 1", "Tie")]
+        public void A04_BothNoPoint(string input, string expected)
+        {
+            AssertResultShouldReturn(input, expected);
+        }
+
         private void AssertResultShouldReturn(string input, string expected)
         {
             var actual = _game.ShowResult(input);
