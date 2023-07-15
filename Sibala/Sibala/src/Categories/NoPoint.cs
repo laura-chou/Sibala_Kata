@@ -2,9 +2,9 @@
 {
     public class NoPoint : Category
     {
-        public override string Name { get; }
+        public override string Name => string.Empty;
 
-        public override string Output { get; }
+        public override string Output => string.Empty;
 
         public override CategoryType Type => CategoryType.NoPoint;
     }
