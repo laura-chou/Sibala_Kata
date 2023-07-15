@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Sibala.src
@@ -21,18 +22,14 @@ namespace Sibala.src
             } 
             else
             {
-                if (player1Dices.GetCategory().Type == CategoryType.NormalPoint)
+                var categoryComparerLookUp = new Dictionary<CategoryType, IComparer>
                 {
-                    comparer = new NormalPointComparer();
-                }
-                else if (player1Dices.GetCategory().Type == CategoryType.AllOfKind)
-                {
-                    comparer = new AllOfKindComparer();
-                }
-                else
-                {
-                    comparer = new NoPointComparer();
-                }
+                    { CategoryType.NormalPoint, new NormalPointComparer()},
+                    { CategoryType.AllOfKind, new AllOfKindComparer()},
+                    { CategoryType.NoPoint, new NoPointComparer()},
+                };
+
+                comparer = categoryComparerLookUp[player1Dices.GetCategory().Type];
             }
 
             var compareResult = comparer.Compare(player1Dices, player2Dices);
