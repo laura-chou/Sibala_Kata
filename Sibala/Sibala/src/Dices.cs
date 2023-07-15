@@ -34,19 +34,29 @@ namespace Sibala.src
 
         public Category GetCategory()
         {
-            if (DiceGrouping
-                .Count(dice => dice.Count() == 4) == 1)
+            if (IsAllOfKind())
             {
                 return new AllOfKind(this);
             }
 
-            if (DiceGrouping
-                .Count(dice => dice.Count() == 2) >= 1)
+            if (IsNormalPoint())
             {
                 return new NormalPoint(this);
             }
 
             return new NoPoint();
+        }
+
+        private bool IsNormalPoint()
+        {
+            return DiceGrouping
+                            .Count(dice => dice.Count() == 2) >= 1;
+        }
+
+        private bool IsAllOfKind()
+        {
+            return DiceGrouping
+                            .Count(dice => dice.Count() == 4) == 1;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
