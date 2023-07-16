@@ -10,7 +10,7 @@ namespace Sibala.src
 
         public string WinnerPoint { get; private set; }
 
-        public int Compare(List<Dice> player1Dices, List<Dice> player2Dices)
+        public int Compare(Dices player1Dices, Dices player2Dices)
         {
             var calDices1 = CalculateNormalPointDices(player1Dices);
             var calDices2 = CalculateNormalPointDices(player2Dices);
@@ -33,7 +33,7 @@ namespace Sibala.src
             return compareResult;
         }
 
-        private static IList<Dice> CalculateNormalPointDices(List<Dice> playerDices)
+        private static IList<Dice> CalculateNormalPointDices(Dices playerDices)
         {
             var minRepeatDices = playerDices
                 .GroupBy(dices => dices.Value)

@@ -6,6 +6,6 @@ namespace Sibala.src
     {
         string WinnerCategory { get; }
         string WinnerPoint { get; }
-        int Compare(List<Dice> player1Dices, List<Dice> player2Dices);
+        int Compare(Dices player1Dices, Dices player2Dices);
     }
 }

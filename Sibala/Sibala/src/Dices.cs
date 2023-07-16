@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Sibala.src
 {
-    internal class Dices : IEnumerable<Dice>
+    public class Dices : IEnumerable<Dice>
     {
         private readonly List<Dice> _dice;
 

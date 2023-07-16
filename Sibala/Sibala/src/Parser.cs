@@ -31,7 +31,7 @@ namespace Sibala.src
             return new Player
             {
                 Name = playerName,
-                Dices = playerDices
+                Dices = new Dices(playerDices)
             };
         }
     }
