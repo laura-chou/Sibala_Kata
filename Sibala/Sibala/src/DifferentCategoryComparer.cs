@@ -7,8 +7,9 @@
         public string WinnerPoint { get; private set; }
         public int Compare(Dices player1Dices, Dices player2Dices)
         {
-            WinnerCategory = player1Dices.GetCategory().Name;
-            WinnerPoint = "6";
+            var category = player1Dices.GetCategory();
+            WinnerCategory = category.Name;
+            WinnerPoint = category.Output;
 
             return 1;
         }
