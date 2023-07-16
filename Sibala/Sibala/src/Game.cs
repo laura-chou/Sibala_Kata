@@ -15,7 +15,7 @@ namespace Sibala.src
             var player1Dices = players[0].Dices;
             var player2Dices = players[1].Dices;
 
-            var dice1CategoryType = GetDicesCategoryType(new Dices(player1Dices));
+            var dice1CategoryType = new Dices(player1Dices).GetDicesCategoryType();
 
             IComparer comparer;
 
@@ -39,25 +39,6 @@ namespace Sibala.src
             }
 
             return "Tie";
-        }
-
-        private static CategoryType GetDicesCategoryType(Dices playerDices)
-        {
-            if (playerDices
-                .GroupBy(dices => dices.Value)
-                .Count(dice => dice.Count() == 4) == 1)
-            {
-                return CategoryType.AllOfKind;
-            }
-
-            if (playerDices
-                .GroupBy(dices => dices.Value)
-                .Count(dice => dice.Count() == 2) >= 1)
-            {
-                return CategoryType.NormalPoint;
-            }
-            
-            throw new NotImplementedException();
         }
     }
 }
