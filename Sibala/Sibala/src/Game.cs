@@ -15,9 +15,11 @@ namespace Sibala.src
             var player1Dices = players[0].Dices;
             var player2Dices = players[1].Dices;
 
+            var dice1CategoryType = GetDicesCategoryType(player1Dices);
+
             IComparer comparer;
 
-            if (player1Dices.GroupBy(dices => dices.Value).Count(dice => dice.Count() == 2) >= 1)
+            if (dice1CategoryType == CategoryType.NormalPoint)
             {
                 comparer = new NormalPointComparer();
             }
@@ -37,6 +39,25 @@ namespace Sibala.src
             }
 
             return "Tie";
+        }
+
+        private static CategoryType GetDicesCategoryType(List<Dice> playerDices)
+        {
+            if (playerDices
+                .GroupBy(dices => dices.Value)
+                .Count(dice => dice.Count() == 4) == 1)
+            {
+                return CategoryType.AllOfKind;
+            }
+
+            if (playerDices
+                .GroupBy(dices => dices.Value)
+                .Count(dice => dice.Count() == 2) >= 1)
+            {
+                return CategoryType.NormalPoint;
+            }
+            
+            throw new NotImplementedException();
         }
     }
 }
