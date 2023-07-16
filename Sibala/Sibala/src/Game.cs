@@ -16,8 +16,14 @@ namespace Sibala.src
             var player2Dices = players[1].Dices;
 
             var dice1CategoryType = player1Dices.GetDicesCategoryType();
+            var dice2CategoryType = player2Dices.GetDicesCategoryType();
 
             IComparer comparer;
+
+            if (dice1CategoryType != dice2CategoryType)
+            {
+                comparer = new DifferentCategoryComparer();
+            }
 
             if (dice1CategoryType == CategoryType.NormalPoint)
             {
