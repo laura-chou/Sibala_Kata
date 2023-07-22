@@ -4,9 +4,8 @@ namespace Sibala.src
 {
     internal class DifferentCategoryComparer : IComparer
     {
-        public string WinnerCategory { get; private set; }
+        public Category WinnerCategory { get; private set; }
 
-        public string WinnerPoint { get; private set; }
         public int Compare(Dices player1Dices, Dices player2Dices)
         {
             var category1 = player1Dices.GetCategory();
@@ -16,9 +15,7 @@ namespace Sibala.src
 
             if (compareResult != 0)
             {
-                var winnerCategory = compareResult > 0 ? category1 : category2;
-                WinnerCategory = winnerCategory.Name;
-                WinnerPoint = winnerCategory.Output;
+                WinnerCategory = compareResult > 0 ? category1 : category2;
             }
 
             return compareResult;
