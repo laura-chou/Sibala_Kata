@@ -26,9 +26,13 @@ namespace Sibala.src
                 {
                     comparer = new NormalPointComparer();
                 }
-                else
+                else if (player1Dices.GetCategory().Type == CategoryType.AllOfKind)
                 {
                     comparer = new AllOfKindComparer();
+                }
+                else
+                {
+                    comparer = new NoPintComparer();
                 }
             }
 
