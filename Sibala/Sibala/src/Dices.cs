@@ -29,20 +29,7 @@ namespace Sibala.src
 
         public CategoryType GetDicesCategoryType()
         {
-            
-            if (DiceGrouping
-                .Count(dice => dice.Count() == 4) == 1)
-            {
-                return CategoryType.AllOfKind;
-            }
-
-            if (DiceGrouping
-                .Count(dice => dice.Count() == 2) >= 1)
-            {
-                return CategoryType.NormalPoint;
-            }
-            
-            throw new NotImplementedException();
+            return GetCategory().Type;
         }
 
         public IEnumerator<Dice> GetEnumerator()
