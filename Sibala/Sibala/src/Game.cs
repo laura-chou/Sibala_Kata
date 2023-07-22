@@ -15,25 +15,7 @@ namespace Sibala.src
             var player1Dices = players[0].Dices;
             var player2Dices = players[1].Dices;
 
-            IComparer comparer;
-
-            if (player1Dices.GetCategory().Type != player2Dices.GetCategory().Type)
-            {
-                comparer = new DifferentCategoryComparer();
-            } 
-            else
-            {
-                var categoryComparerMapper = new Dictionary<CategoryType, IComparer>
-                {
-                    { CategoryType.NormalPoint, new NormalPointComparer() },
-                    { CategoryType.AllOfKind, new AllOfKindComparer() },
-                    { CategoryType.NoPoint, new NoPintComparer() }
-                };
-
-                comparer = categoryComparerMapper[player1Dices.GetCategory().Type];
-            }
-
-            
+            var comparer = new DicesComparer();
 
             var compareResult = comparer.Compare(player1Dices, player2Dices);
 
