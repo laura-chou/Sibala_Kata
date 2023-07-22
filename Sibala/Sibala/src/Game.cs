@@ -42,9 +42,7 @@ namespace Sibala.src
             if (compareResult != 0)
             {
                 var winnerPlayer = compareResult > 0 ? players[0].Name : players[1].Name;
-                var winnerCategory = comparer.WinnerCategory.Name;
-                var winnerPoint = comparer.WinnerCategory.Output;
-                return $"{winnerPlayer} win. - with {winnerCategory}: {winnerPoint}";
+                return $"{winnerPlayer} win. - with {comparer.WinnerCategory.Description}";
             }
 
             return "Tie";
