@@ -20,20 +20,17 @@ namespace Sibala.src
             if (player1Dices.GetCategory().Type != player2Dices.GetCategory().Type)
             {
                 comparer = new DifferentCategoryComparer();
-            } else
+            } 
+            else
             {
-                if (player1Dices.GetCategory().Type == CategoryType.NormalPoint)
+                var categoryComparerMapper = new Dictionary<CategoryType, IComparer>
                 {
-                    comparer = new NormalPointComparer();
-                }
-                else if (player1Dices.GetCategory().Type == CategoryType.AllOfKind)
-                {
-                    comparer = new AllOfKindComparer();
-                }
-                else
-                {
-                    comparer = new NoPintComparer();
-                }
+                    { CategoryType.NormalPoint, new NormalPointComparer() },
+                    { CategoryType.AllOfKind, new AllOfKindComparer() },
+                    { CategoryType.NoPoint, new NoPintComparer() }
+                };
+
+                comparer = categoryComparerMapper[player1Dices.GetCategory().Type];
             }
 
             
