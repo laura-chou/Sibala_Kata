@@ -15,17 +15,14 @@ namespace Sibala.src
             var player1Dices = players[0].Dices;
             var player2Dices = players[1].Dices;
 
-            var dice1CategoryType = player1Dices.GetDicesCategoryType();
-            var dice2CategoryType = player2Dices.GetDicesCategoryType();
-
             IComparer comparer;
 
-            if (dice1CategoryType != dice2CategoryType)
+            if (player1Dices.GetCategory().Type != player2Dices.GetCategory().Type)
             {
                 comparer = new DifferentCategoryComparer();
             } else
             {
-                if (dice1CategoryType == CategoryType.NormalPoint)
+                if (player1Dices.GetCategory().Type == CategoryType.NormalPoint)
                 {
                     comparer = new NormalPointComparer();
                 }

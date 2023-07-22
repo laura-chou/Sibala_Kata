@@ -27,11 +27,6 @@ namespace Sibala.src
             return this.Except(minRepeatDices).ToList();
         }
 
-        public CategoryType GetDicesCategoryType()
-        {
-            return GetCategory().Type;
-        }
-
         public IEnumerator<Dice> GetEnumerator()
         {
             return _dice.GetEnumerator();
