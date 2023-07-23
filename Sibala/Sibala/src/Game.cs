@@ -23,15 +23,20 @@ namespace Sibala.src
             if (dice1CategoryType != dice2CategoryType)
             {
                 comparer = new DifferentCategoryComparer();
-            } else
+            } 
+            else
             {
                 if (dice1CategoryType == CategoryType.NormalPoint)
                 {
                     comparer = new NormalPointComparer();
                 }
-                else
+                else if (dice1CategoryType == CategoryType.AllOfKind)
                 {
                     comparer = new AllOfKindComparer();
+                } else
+                {
+                    comparer = new NoPointComparer();
+
                 }
             }
 
