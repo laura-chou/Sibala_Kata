@@ -1,13 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Sibala.src.Categories;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Sibala.src
 {
     public class AllOfKindComparer : IComparer
     {
-        public string WinnerCategory => "all of a kind";
-
-        public string WinnerPoint { get; private set; }
+        public Category WinnerCategory { get; private set; }
 
         public int Compare(Dices player1Dices, Dices player2Dices)
         {
@@ -21,7 +20,7 @@ namespace Sibala.src
 
             if (compareResult != 0)
             {
-                WinnerPoint = compareResult > 0 ? dicePoint1.Output : dicePoint2.Output;
+                WinnerCategory = new AllOfKind(compareResult > 0 ? player1Dices : player2Dices);
             }
             return compareResult;
         }
