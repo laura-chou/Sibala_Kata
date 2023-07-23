@@ -47,7 +47,7 @@ namespace Sibala.src
             }
 
 
-            throw new NotImplementedException();
+            return new NoPoint();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
